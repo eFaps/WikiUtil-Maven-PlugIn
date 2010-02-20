@@ -250,8 +250,8 @@
         <!-- Wiki Util itself -->
         <dependency>
             <groupId>org.efaps</groupId>
-            <artifactId>org.efaps.wikiutil</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>wikiutil</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
         <!-- annotations used to identify maven plugin syntax -->
         <dependency>
