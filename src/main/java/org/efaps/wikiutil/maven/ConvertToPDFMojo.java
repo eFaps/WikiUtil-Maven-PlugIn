@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2010 The eFaps Team
+ * Copyright 2003 - 2011 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,10 +25,10 @@ import java.io.IOException;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.efaps.maven_java5.org.apache.maven.tools.plugin.Goal;
-import org.efaps.maven_java5.org.apache.maven.tools.plugin.Parameter;
 import org.efaps.wikiutil.export.latex.MakePDF;
 import org.efaps.wikiutil.parser.gwiki.javacc.ParseException;
+import org.jfrog.maven.annomojo.annotations.MojoGoal;
+import org.jfrog.maven.annomojo.annotations.MojoParameter;
 
 /**
  * Mojo to convert Wiki pages to PDF.
@@ -36,87 +36,93 @@ import org.efaps.wikiutil.parser.gwiki.javacc.ParseException;
  * @author The eFaps Team
  * @version $Id$
  */
-@Goal(name = "convert2pdf")
+@MojoGoal(value = "convert2pdf")
 public class ConvertToPDFMojo
     extends AbstractMojo
 {
     /**
      * Source directory where the Wiki pages are located.
      */
-    @Parameter(required = true, expression = "${basedir}/src/documentation/wiki")
+    @MojoParameter(required = true, expression = "${basedir}/src/documentation/wiki")
     private File sourceDir;
 
     /**
      * Target file directory where the Latex files are created.
      */
-    @Parameter(required = true, expression = "${project.build.directory}/wiki2pdf")
+    @MojoParameter(required = true, expression = "${project.build.directory}/wiki2pdf")
     private File targetDir;
 
     /**
      * Target PDF file.
      */
-    @Parameter(required = true, expression = "${project.build.directory}/${project.artifactId}-${project.version}.pdf")
+    @MojoParameter(required = true, expression = "${project.build.directory}/${project.artifactId}-${project.version}.pdf")
     private File targetFile;
 
     /**
      * File extension of the Wiki pages.
      */
-    @Parameter(defaultValue = ".wiki")
+    @MojoParameter(defaultValue = ".wiki")
     private String fileExtension;
 
     /**
      * Name of the index wiki page.
      */
-    @Parameter(defaultValue = "Index")
+    @MojoParameter(defaultValue = "Index")
     private String indexName;
 
     /**
      * Author of the converted document.
      */
-    @Parameter(expression = "${user.name}")
+    @MojoParameter(expression = "${user.name}")
     private String wikiAuthor;
 
     /**
      * Version used for the Wiki.
      */
-    @Parameter(expression = "${project.version}")
+    @MojoParameter(expression = "${project.version}")
     private String wikiVersion;
 
     /**
      * Name of the license.
      */
-    @Parameter
+    @MojoParameter
     private String wikiLicense;
 
     /**
      * File of the license text.
      */
-    @Parameter
+    @MojoParameter
     private File wikiLicenseFile;
 
     /**
      * Title of the PDF document.
      */
-    @Parameter(expression = "${project.name}")
+    @MojoParameter(expression = "${project.name}")
     private String wikiTitle;
 
     /**
      * Sub title of the PDF document.
      */
-    @Parameter
+    @MojoParameter
     private String wikiSubTitle;
 
     /**
      * Creator for the PDF property.
      */
-    @Parameter(defaultValue = "eFaps Wiki Util")
+    @MojoParameter(defaultValue = "eFaps Wiki Util")
     private String wikiPDFCreator;
 
     /**
      * Keywords for the PDF property.
      */
-    @Parameter
+    @MojoParameter
     private String wikiPDFKeywords;
+
+    /**
+     * Executable for the PDF LaTeX.
+     */
+    @MojoParameter(defaultValue = "/opt/local/bin/pdflatex")
+    private String executablePdfLaTeX;
 
     /**
      * Executes the convert of Wiki pages to a PDF file.
@@ -132,7 +138,8 @@ public class ConvertToPDFMojo
                 .setWikiFileExtension(this.fileExtension)
                 .setWikiIndexName(this.indexName)
                 .setWikiRootURI(this.sourceDir.toURI())
-                .setWikiTargetFile(this.targetFile);
+                .setWikiTargetFile(this.targetFile)
+                .setExecutablePdfLaTeX(this.executablePdfLaTeX);
 
             if ((this.wikiAuthor != null) && !"".equals(this.wikiAuthor))  {
                 makePDF.variable("WikiAuthor", this.wikiAuthor);
