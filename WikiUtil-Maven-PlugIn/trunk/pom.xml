@@ -34,6 +34,9 @@
     <artifactId>wikiutil-maven-plugin</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <name>Maven Plug-In for Wiki Utility</name>
+    <description>
+        Maven Plug-In for the eFaps Wikiutil is used to render for a file containing wiki formated information a webpage or pdf.
+    </description>
     <url>http://wikiutil.efaps.org</url>
     <licenses>
         <license>
