@@ -27,101 +27,116 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.efaps.wikiutil.export.latex.MakePDF;
 import org.efaps.wikiutil.parser.gwiki.javacc.ParseException;
-import org.jfrog.maven.annomojo.annotations.MojoGoal;
-import org.jfrog.maven.annomojo.annotations.MojoParameter;
 
 /**
  * Mojo to convert Wiki pages to PDF.
  *
  * @author The eFaps Team
  * @version $Id$
+ * @goal convert2pdf
  */
-@MojoGoal(value = "convert2pdf")
 public class ConvertToPDFMojo
     extends AbstractMojo
 {
     /**
      * Source directory where the Wiki pages are located.
+     *
+     * @required
+     * @parameter expression = "${basedir}/src/documentation/wiki"
      */
-    @MojoParameter(required = true, expression = "${basedir}/src/documentation/wiki")
     private File sourceDir;
 
     /**
      * Target file directory where the Latex files are created.
+     *
+     * @required
+     * @parameter expression = "${project.build.directory}/wiki2pdf"
      */
-    @MojoParameter(required = true, expression = "${project.build.directory}/wiki2pdf")
     private File targetDir;
 
     /**
      * Target PDF file.
+     *
+     * @required
+     * @parameter expression = "${project.build.directory}/${project.artifactId}-${project.version}.pdf"
      */
-    @MojoParameter(required = true, expression = "${project.build.directory}/${project.artifactId}-${project.version}.pdf")
     private File targetFile;
 
     /**
      * File extension of the Wiki pages.
+     *
+     * @parameter default-value = ".wiki"
      */
-    @MojoParameter(defaultValue = ".wiki")
     private String fileExtension;
 
     /**
      * Name of the index wiki page.
+     *
+     * @parameter default-value = "Index"
      */
-    @MojoParameter(defaultValue = "Index")
     private String indexName;
 
     /**
      * Author of the converted document.
+     *
+     * @parameter expression = "${user.name}"
      */
-    @MojoParameter(expression = "${user.name}")
     private String wikiAuthor;
 
     /**
      * Version used for the Wiki.
+     *
+     * @parameter expression = "${project.version}"
      */
-    @MojoParameter(expression = "${project.version}")
     private String wikiVersion;
 
     /**
      * Name of the license.
+     *
+     * @parameter
      */
-    @MojoParameter
     private String wikiLicense;
 
     /**
      * File of the license text.
+     *
+     * @parameter
      */
-    @MojoParameter
     private File wikiLicenseFile;
 
     /**
      * Title of the PDF document.
+     *
+     * @parameter expression = "${project.name}"
      */
-    @MojoParameter(expression = "${project.name}")
     private String wikiTitle;
 
     /**
      * Sub title of the PDF document.
+     *
+     * @parameter
      */
-    @MojoParameter
     private String wikiSubTitle;
 
     /**
      * Creator for the PDF property.
+     *
+     * @parameter default-value = "eFaps Wiki Util"
      */
-    @MojoParameter(defaultValue = "eFaps Wiki Util")
     private String wikiPDFCreator;
 
     /**
      * Keywords for the PDF property.
+     *
+     * @parameter
      */
-    @MojoParameter
     private String wikiPDFKeywords;
 
     /**
      * Executable for the PDF LaTeX.
+     *
+     *  @parameter default-value = "/opt/local/bin/pdflatex"
      */
-    @MojoParameter(defaultValue = "/opt/local/bin/pdflatex")
     private String executablePdfLaTeX;
 
     /**

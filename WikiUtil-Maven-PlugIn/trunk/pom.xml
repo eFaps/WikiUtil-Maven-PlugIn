@@ -138,26 +138,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>2.7</version>
-                <dependencies>
-                   <dependency>
-                        <groupId>org.jfrog.maven.annomojo</groupId>
-                        <artifactId>maven-plugin-tools-anno</artifactId>
-                        <version>1.4.0</version>
-                        <scope>runtime</scope>
-                        <!-- The com.sun:tools dependency is a system scope dependency, which does not work
-                            on Mac OS due to a wrong system path. (it is already included in the standart JVM path).
-                            Therefor it is excluded. If necessary it can be included by using the profile
-                            "default-tools.jar".
-                        -->
-                        <exclusions>
-                            <exclusion>
-                            <groupId>com.sun</groupId>
-                            <artifactId>tools</artifactId>
-                            </exclusion>
-                        </exclusions>
-                    </dependency>
-                </dependencies>
+                <version>2.9</version>
             </plugin>
             <!-- checkstyle -->
             <plugin>
@@ -388,11 +369,6 @@
         </dependency>
         <!-- annotations used to identify maven plugin syntax -->
         <dependency>
-            <groupId>org.jfrog.maven.annomojo</groupId>
-            <artifactId>maven-plugin-anno</artifactId>
-            <version>1.4.0</version>
-        </dependency>
-         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
             <version>2.0</version>
