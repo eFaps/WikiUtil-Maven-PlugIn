@@ -23,9 +23,7 @@
 
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ************************************************************************
@@ -34,7 +32,7 @@
     <packaging>maven-plugin</packaging>
     <groupId>org.efaps</groupId>
     <artifactId>wikiutil-maven-plugin</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>Maven Plug-In for Wiki Utility</name>
     <url>http://wikiutil.efaps.org</url>
     <licenses>
@@ -80,9 +78,9 @@
 
     <!-- SubVersion Repository -->
     <scm>
-        <connection>scm:svn:http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn//trunk</connection>
-        <developerConnection>scm:svn:https://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn//trunk</developerConnection>
-        <url>http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/</url>
+        <connection>scm:svn:http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/tags/V0.0.2</connection>
+        <developerConnection>scm:svn:https://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/tags/V0.0.2</developerConnection>
+        <url>http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/tags/V0.0.2</url>
     </scm>
 
     <!-- Distribution Repository -->
