@@ -32,7 +32,7 @@
     <packaging>maven-plugin</packaging>
     <groupId>org.efaps</groupId>
     <artifactId>wikiutil-maven-plugin</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>Maven Plug-In for Wiki Utility</name>
     <description>
         Maven Plug-In for the eFaps Wikiutil is used to render for a file containing wiki formated information a webpage or pdf.
@@ -81,9 +81,9 @@
 
     <!-- SubVersion Repository -->
     <scm>
-        <connection>scm:svn:http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/tags/V0.0.3</connection>
-        <developerConnection>scm:svn:https://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/tags/V0.0.3</developerConnection>
-        <url>http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/tags/V0.0.3</url>
+        <connection>scm:svn:http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn//trunk</connection>
+        <developerConnection>scm:svn:https://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn//trunk</developerConnection>
+        <url>http://efaps.googlecode.com/svn/WikiUtil-Maven-PlugIn/</url>
     </scm>
 
     <!-- Distribution Repository -->
